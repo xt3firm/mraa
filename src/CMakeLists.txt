@@ -109,6 +109,7 @@ set (mraa_LIB_ARM_SRCS_NOAUTO
   ${PROJECT_SOURCE_DIR}/src/arm/de_nano_soc.c
   ${PROJECT_SOURCE_DIR}/src/arm/rockpi4.c
   ${PROJECT_SOURCE_DIR}/src/arm/rockpis.c
+  ${PROJECT_SOURCE_DIR}/src/arm/rockpin10.c
   ${PROJECT_SOURCE_DIR}/src/arm/adlink_ipi.c
   ${PROJECT_SOURCE_DIR}/src/arm/siemens/iot2050.c
   ${PROJECT_SOURCE_DIR}/src/arm/siemens/platform.c
