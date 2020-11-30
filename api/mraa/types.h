@@ -71,6 +71,8 @@ typedef enum {
     MRAA_SIEMENS_IOT2050 = 26,      /**< Siemens IOT2050 board */
     MRAA_ROCKPIS = 27,              /**< Radxa ROCK PI S Board */
     MRAA_ROCKPIN10 = 28,            /**< Radxa ROCK PI N 10 Board */
+    MRAA_ROCKPIE = 29,              /**< Radxa ROCK PI E V1.2 */
+    MRAA_ROCKPIE_V11 = 30,          /**< Radxa ROCK PI E V1.1 */
     // USB platform extenders start at 256
     MRAA_FTDI_FT4222 = 256,         /**< FTDI FT4222 USB to i2c bridge */
 
