@@ -105,7 +105,7 @@ mraa_rockpix_board()
     mraa_rockpix_set_pininfo(b, 9,  "GND",         (mraa_pincapabilities_t){ 1, 0, 0, 0, 0, 0, 0, 0 }, -1);
     mraa_rockpix_set_pininfo(b, 10, "UART2_RX",    (mraa_pincapabilities_t){ 1, 0, 0, 0, 0, 0, 0, 1 }, -1);
     mraa_rockpix_set_pininfo(b, 11, "SPI2_CLK",    (mraa_pincapabilities_t){ 1, 0, 0, 0, 1, 0, 0, 1 }, -1);
-    mraa_rockpix_set_pininfo(b, 12, "GPIO_DFX3",   (mraa_pincapabilities_t){ 1, 1, 0, 0, 0, 0, 0, 0 }, 345);
+    mraa_rockpix_set_pininfo(b, 12, "GPIO_DFX3",   (mraa_pincapabilities_t){ 1, 1, 0, 0, 0, 0, 0, 0 }, 342);
     mraa_rockpix_set_pininfo(b, 13, "SPI2_MISO",   (mraa_pincapabilities_t){ 1, 0, 0, 0, 1, 0, 0, 1 }, -1);
     mraa_rockpix_set_pininfo(b, 14, "GND",         (mraa_pincapabilities_t){ 1, 0, 0, 0, 0, 0, 0, 0 }, -1);
     mraa_rockpix_set_pininfo(b, 15, "SPI2_CS0",    (mraa_pincapabilities_t){ 1, 0, 0, 0, 1, 0, 0, 0 }, -1);
