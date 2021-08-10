@@ -19,7 +19,7 @@
 
 #define MAX_SIZE 64
 
-const char* rockpis_serialdev[MRAA_ROCKPIS_UART_COUNT] = { "/dev/ttyS0","/dev/ttyS1","/dev/ttyS2"};
+const char* rockpis_serialdev[MRAA_ROCKPIS_UART_COUNT] = { "/dev/ttyS0","/dev/ttyS1","/dev/ttyS2","/dev/ttyS3"};
 
 void
 mraa_rockpis_pininfo(mraa_board_t* board, int index, int sysfs_pin, mraa_pincapabilities_t pincapabilities_t, char* fmt, ...)
@@ -71,6 +71,7 @@ mraa_rockpis()
             b->uart_dev[0].device_path = (char*) rockpis_serialdev[0];
             b->uart_dev[1].device_path = (char*) rockpis_serialdev[1];
             b->uart_dev[2].device_path = (char*) rockpis_serialdev[2];
+            b->uart_dev[3].device_path = (char*) rockpis_serialdev[3];
         }
     }
 
@@ -80,22 +81,22 @@ mraa_rockpis()
     b->uart_dev[0].index = 0;
     b->uart_dev[1].index = 1;
     b->uart_dev[2].index = 2;
-
+    b->uart_dev[3].index = 3;
     // I2C
     if (strncmp(b->platform_name, PLATFORM_NAME_ROCK_PI_S, MAX_SIZE) == 0) {
         b->i2c_bus_count = MRAA_ROCKPIS_I2C_COUNT ;
         b->def_i2c_bus = 0;
         b->i2c_bus[0].bus_id = 0;
         b->i2c_bus[1].bus_id = 1;
-        b->i2c_bus[2].bus_id = 4;
-
+        b->i2c_bus[2].bus_id = 2;
+        b->i2c_bus[3].bus_id = 3;
     }
 
     // SPI
     b->spi_bus_count = MRAA_ROCKPIS_SPI_COUNT;
     b->def_spi_bus = 0;
-    b->spi_bus[0].bus_id = 2;
-
+    b->spi_bus[0].bus_id = 0;
+    b->spi_bus[1].bus_id = 1;
 
     // PWM
     b->pwm_dev_count = MRAA_ROCKPIS_PWM_COUNT;
@@ -150,6 +151,32 @@ mraa_rockpis()
     mraa_rockpis_pininfo(b, 24,  57, (mraa_pincapabilities_t){1,1,0,0,1,1,0,1}, "UART1_TX,I2C0_SCL,SPI2_CSN0");
     mraa_rockpis_pininfo(b, 25,  -1, (mraa_pincapabilities_t){1,0,0,0,0,0,0,0}, "GND");
     mraa_rockpis_pininfo(b, 26,  -1, (mraa_pincapabilities_t){1,0,0,0,0,0,1,0}, "ADC_IN0");
+    mraa_rockpis_pininfo(b, 27,  -1, (mraa_pincapabilities_t){1,0,0,0,0,0,0,0}, "GND");
+    mraa_rockpis_pininfo(b, 28,  77, (mraa_pincapabilities_t){1,1,0,0,0,0,0,0}, "I2S0_8CH_SDI0");
+    mraa_rockpis_pininfo(b, 29,  -1, (mraa_pincapabilities_t){1,0,0,0,0,0,1,0}, "ADC_KEY_IN1");
+    mraa_rockpis_pininfo(b, 30,  78, (mraa_pincapabilities_t){1,1,0,0,0,0,0,0}, "I2S0_8CH_SDI1");
+    mraa_rockpis_pininfo(b, 31,  -1, (mraa_pincapabilities_t){1,0,0,0,0,0,0,0}, "MICBIAS2");
+    mraa_rockpis_pininfo(b, 32,  79, (mraa_pincapabilities_t){1,1,0,0,0,0,0,0}, "I2S0_8CH_SDI2");
+    mraa_rockpis_pininfo(b, 33,  -1, (mraa_pincapabilities_t){1,0,0,0,0,0,0,0}, "MICBIAS1");
+    mraa_rockpis_pininfo(b, 34,  80, (mraa_pincapabilities_t){1,1,0,0,0,0,0,0}, "I2S0_8CH_SDI3");
+    mraa_rockpis_pininfo(b, 35,  -1, (mraa_pincapabilities_t){1,0,0,0,0,0,0,0}, "MICN8");
+    mraa_rockpis_pininfo(b, 36,  -1, (mraa_pincapabilities_t){1,0,0,0,0,0,0,0}, "MCIP8");
+    mraa_rockpis_pininfo(b, 37,  -1, (mraa_pincapabilities_t){1,0,0,0,0,0,0,0}, "MICN7");
+    mraa_rockpis_pininfo(b, 38,  -1, (mraa_pincapabilities_t){1,0,0,0,0,0,0,0}, "MCIP7");
+    mraa_rockpis_pininfo(b, 39, 109, (mraa_pincapabilities_t){1,1,0,0,1,1,0,1}, "UART3_TX, I2C3_SCL_M1, SPI1_CSN0");
+    mraa_rockpis_pininfo(b, 40, 108, (mraa_pincapabilities_t){1,1,0,0,1,1,0,1}, "UART3_RX, I2C3_SDA_M1, SPI1_MOSI");
+    mraa_rockpis_pininfo(b, 41, 107, (mraa_pincapabilities_t){1,1,0,0,1,0,0,0}, "SPI1_CLK");
+    mraa_rockpis_pininfo(b, 42, 106, (mraa_pincapabilities_t){1,1,0,0,1,0,0,0}, "SPI1_MISO");
+    mraa_rockpis_pininfo(b, 43,  76, (mraa_pincapabilities_t){1,1,0,0,0,0,0,0}, "I2S0_8CH_SDO3");
+    mraa_rockpis_pininfo(b, 44,  75, (mraa_pincapabilities_t){1,1,0,0,0,0,0,0}, "I2S0_8CH_SDO2");
+    mraa_rockpis_pininfo(b, 45,  72, (mraa_pincapabilities_t){1,1,0,0,0,0,0,0}, "I2S0_8CH_LRCK_RX");
+    mraa_rockpis_pininfo(b, 46,  70, (mraa_pincapabilities_t){1,1,0,0,0,0,0,0}, "I2S0_8CH_SCLK_RX");
+    mraa_rockpis_pininfo(b, 47,  -1, (mraa_pincapabilities_t){1,0,0,0,0,0,0,0}, "MICN2");
+    mraa_rockpis_pininfo(b, 48,  -1, (mraa_pincapabilities_t){1,0,0,0,0,0,0,0}, "MICIP2");
+    mraa_rockpis_pininfo(b, 49,  -1, (mraa_pincapabilities_t){1,0,0,0,0,0,0,0}, "MICN1");
+    mraa_rockpis_pininfo(b, 50,  -1, (mraa_pincapabilities_t){1,0,0,0,0,0,0,0}, "MCIP1");
+    mraa_rockpis_pininfo(b, 51,  -1, (mraa_pincapabilities_t){1,0,0,0,0,0,0,0}, "LINEOUT_R");
+    mraa_rockpis_pininfo(b, 52,  -1, (mraa_pincapabilities_t){1,0,0,0,0,0,0,0}, "LINEOUT_L");
 
     return b;
 }
