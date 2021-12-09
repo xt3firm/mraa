@@ -75,6 +75,7 @@ typedef enum {
     MRAA_ROCKPIE_V11 = 30,          /**< Radxa ROCK PI E V1.1 */
     MRAA_ROCKPIX = 31,              /**< Radxa ROCK PI X V1.4 */
     MRAA_RADXA_ZERO = 32,           /**< Radxa Zero V1.3 */
+    MRAA_RADXA_ROCK_3_MODEL_A = 33, /**< Radxa ROCK3A V1.3 */
     // USB platform extenders start at 256
     MRAA_FTDI_FT4222 = 256,         /**< FTDI FT4222 USB to i2c bridge */
 
