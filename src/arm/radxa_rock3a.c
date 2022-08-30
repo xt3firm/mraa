@@ -15,7 +15,8 @@
 
 #define DT_BASE "/proc/device-tree"
 
-#define PLATFORM_NAME_RADXA_ROCK_3_MODEL_A "Radxa ROCK 3 Model A"
+#define PLATFORM_NAME_RADXA_ROCK_3_MODEL_A "Radxa ROCK3 Model A"
+#define PLATFORM_NAME_RADXA_ROCK_3_MODEL_B "Radxa ROCK3 Model B"
 
 #define MAX_SIZE 64
 
@@ -66,7 +67,9 @@ mraa_radxa_rock3a()
 
     if (mraa_file_exist(DT_BASE "/model")) {
         // We are on a modern kernel, great!!!!
-        if (mraa_file_contains(DT_BASE "/model", PLATFORM_NAME_RADXA_ROCK_3_MODEL_A)  ) {
+        if (mraa_file_contains(DT_BASE "/model", PLATFORM_NAME_RADXA_ROCK_3_MODEL_A)  ||
+            mraa_file_contains(DT_BASE "/model", PLATFORM_NAME_RADXA_ROCK_3_MODEL_B)
+            ) {
             b->platform_name = PLATFORM_NAME_RADXA_ROCK_3_MODEL_A;
             b->uart_dev[0].device_path = (char*) radxa_rock3a_serialdev[0];
             b->uart_dev[1].device_path = (char*) radxa_rock3a_serialdev[1];
