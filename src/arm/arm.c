@@ -113,7 +113,9 @@ mraa_arm_platform()
         else if (mraa_file_contains("/proc/device-tree/model", "Radxa Zero"))
             platform_type = MRAA_RADXA_ZERO;
         else if (mraa_file_contains("/proc/device-tree/model", "Radxa ROCK3 Model A") ||
-                 mraa_file_contains("/proc/device-tree/model", "Radxa ROCK3 Model B")
+                 mraa_file_contains("/proc/device-tree/model", "Radxa ROCK3 Model B") ||
+                 mraa_file_contains("/proc/device-tree/model", "Radxa ROCK 3 Model A") ||
+                 mraa_file_contains("/proc/device-tree/model", "Radxa ROCK 3 Model B")
                 )
             platform_type = MRAA_RADXA_ROCK_3_MODEL_A;
         else if (mraa_file_contains("/proc/device-tree/compatible", "raspberrypi,"))
