@@ -16,8 +16,9 @@
 
 #define DT_BASE "/proc/device-tree"
 /*
+* "Radxa ROCK Pi 4C+" is the model name on stock 6.x kernels
 * "Radxa ROCK Pi 4" is the model name on stock 5.x kernels
-* "ROCK PI 4A", "ROCK PI 4B" and "ROCK PI 4C" is used on Radxa 4.4 kernel
+* "ROCK PI 4A", "ROCK PI 4B" and "ROCK PI 4C" and "ROCK PI 4C+" are used on Radxa 4.4 kernel
 * so we search for the string below by ignoring case
 */
 #define PLATFORM_NAME_ROCK_PI4 "ROCK Pi 4"
