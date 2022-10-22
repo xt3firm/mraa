@@ -17,6 +17,7 @@
 #include "arm/rockpie_v11.h"
 #include "arm/radxa_zero.h"
 #include "arm/radxa_rock3a.h"
+#include "arm/radxa_rock3c.h"
 #include "arm/de_nano_soc.h"
 #include "arm/banana.h"
 #include "arm/beaglebone.h"
@@ -118,6 +119,8 @@ mraa_arm_platform()
                  mraa_file_contains("/proc/device-tree/model", "Radxa ROCK 3 Model B")
                 )
             platform_type = MRAA_RADXA_ROCK_3_MODEL_A;
+        else if (mraa_file_contains("/proc/device-tree/model", "Radxa ROCK3 Model C"))
+            platform_type = MRAA_RADXA_ROCK_3_MODEL_C;
         else if (mraa_file_contains("/proc/device-tree/model", "Radxa CM3 IO"))
             platform_type = MRAA_RADXA_CM3_IO;
         else if (mraa_file_contains("/proc/device-tree/compatible", "raspberrypi,"))
@@ -164,6 +167,9 @@ mraa_arm_platform()
             break;
         case MRAA_RADXA_ROCK_3_MODEL_A:
             plat = mraa_radxa_rock3a();
+            break;
+        case MRAA_RADXA_ROCK_3_MODEL_C:
+            plat = mraa_radxa_rock3c();
             break;
         case MRAA_RADXA_CM3_IO:
             plat = mraa_radxa_cm3_io();
