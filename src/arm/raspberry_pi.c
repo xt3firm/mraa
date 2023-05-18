@@ -644,7 +644,7 @@ mraa_raspberry_pi()
     while ((child = readdir(gpio_dir)) != NULL) {
         if (strstr(child->d_name, "gpiochip")) {
             char chip_path[MAX_SIZE];
-            sprintf(chip_path, "/sys/class/gpio/%s/label", child->d_name);
+            snprintf(chip_path, sizeof(chip_path), "/sys/class/gpio/%s/label", child->d_name);
             if (mraa_file_contains(chip_path, "bcm2835")) {
                 if (mraa_atoi(child->d_name + 8, &pin_base) != MRAA_SUCCESS) {
                     free(b->adv_func);

@@ -301,7 +301,7 @@ mraa_beaglebone_pwm_init_replace(int pin)
         return NULL;
     }
 
-    sprintf(chippath, SYSFS_CLASS_PWM "pwmchip%u", chip_id);
+    snprintf(chippath, sizeof(chippath), SYSFS_CLASS_PWM "pwmchip%u", chip_id);
 
     if (!mraa_file_exist(chippath)) {
         syslog(LOG_ERR, "pwm: Chip path %s does not exist for pin %d", chippath, pin);
@@ -315,12 +315,12 @@ mraa_beaglebone_pwm_init_replace(int pin)
         return NULL;
     }
 
-    sprintf(devpath, SYSFS_CLASS_PWM "pwmchip%u/pwm%u", chip_id, pwm_chip->index);
+    snprintf(devpath, sizeof(devpath), SYSFS_CLASS_PWM "pwmchip%u/pwm%u", chip_id, pwm_chip->index);
 
     if (!mraa_file_exist(devpath)) {
         FILE* fh;
         char exportpath[MAX_SIZE];
-        sprintf(exportpath, "%s/export", chippath);
+        snprintf(exportpath, sizeof(exportpath), "%s/export", chippath);
         fh = fopen(exportpath, "w");
         if (fh == NULL) {
             syslog(LOG_ERR, "pwm: Failed to open %s for writing, check access "
