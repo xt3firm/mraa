@@ -285,7 +285,7 @@ static mraa_result_t gpio_init_pre(int pin)
 static int sx150x_init()
 {
         char rx_tx_buf[100] = {0};
-	int i, bus_num, fd;
+	int i, bus_num = -1, fd;
 
         for(i = 0; i < 999; i++)
 	{
