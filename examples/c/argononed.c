@@ -267,7 +267,7 @@ static void wait_for_raising_edge(mraa_gpio_context dev)
 }
 
 /* The reboot daemon: check the button and reboot */
-static int check_shutdown(mraa_i2c_context)
+static int check_shutdown(mraa_i2c_context unused)
 {
     int const PIN_SHUTDOWN = 7;
 
