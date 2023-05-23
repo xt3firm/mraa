@@ -20,6 +20,7 @@ extern "C" {
 #define MRAA_ROCKPI4_PWM_COUNT  2
 #define MRAA_ROCKPI4_AIO_COUNT  1
 #define MRAA_ROCKPI4_PIN_COUNT  40
+#define MRAA_ROCKPI4_LED_COUNT  2
 
 mraa_board_t *
         mraa_rockpi4();

@@ -26,7 +26,8 @@
 #define PLATFORM_NAME_ROCK_PI4_3 "ROCK 4"
 #define MAX_SIZE 64
 
-const char* rockpi4_serialdev[MRAA_ROCKPI4_UART_COUNT] = { "/dev/ttyS2", "/dev/ttyS4" };
+static const char* rockpi4_serialdev[MRAA_ROCKPI4_UART_COUNT] = { "/dev/ttyS2", "/dev/ttyS4" };
+static const char* rockpi4_led[MRAA_ROCKPI4_LED_COUNT] = { "status", "power" };
 
 void
 mraa_rockpi4_pininfo(mraa_board_t* board, int index, int sysfs_pin, mraa_pincapabilities_t pincapabilities_t, char* fmt, ...)
@@ -170,5 +171,9 @@ mraa_rockpi4()
     mraa_rockpi4_pininfo(b, 39,  -1, (mraa_pincapabilities_t){1,0,0,0,0,0,0,0}, "GND");
     mraa_rockpi4_pininfo(b, 40, 135, (mraa_pincapabilities_t){1,1,0,0,0,0,0,0}, "GPIO4_A7");
 
+    /* set leds */
+    b->led_dev[0].name = (char*) rockpi4_led[0];
+    b->led_dev[1].name = (char*) rockpi4_led[1];
+    b->led_dev_count    = MRAA_ROCKPI4_LED_COUNT;
     return b;
 }
