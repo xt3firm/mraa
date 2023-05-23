@@ -249,7 +249,7 @@ mraa_led_read_brightness(mraa_led_context dev)
 int
 mraa_led_read_max_brightness(mraa_led_context dev)
 {
-    char buf[3];
+    char buf[8];
 
     if (dev == NULL) {
         syslog(LOG_ERR, "led: read_max_brightness: context is invalid");
@@ -274,10 +274,15 @@ mraa_led_read_max_brightness(mraa_led_context dev)
         lseek(dev->max_bright_fd, 0, SEEK_SET);
     }
 
-    if (read(dev->max_bright_fd, buf, 3 * sizeof(char)) == -1) {
+    ssize_t l = read(dev->max_bright_fd, buf, sizeof(buf));
+    if (l == -1) {
         syslog(LOG_ERR, "led: read_max_brightness: Failed to read 'max_brightness': %s", strerror(errno));
         return MRAA_ERROR_UNSPECIFIED;
     }
+    if (l >= sizeof(buf))
+        l = sizeof(buf) - 1;
+    buf[l] = '\0';
+
     lseek(dev->max_bright_fd, 0, SEEK_SET);
 
     return (int) atoi(buf);
