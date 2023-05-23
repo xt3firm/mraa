@@ -20,6 +20,7 @@ extern "C" {
 #define MRAA_RADXA_ROCK_5B_PWM_COUNT  10
 #define MRAA_RADXA_ROCK_5B_ADC_COUNT  1
 #define MRAA_RADXA_ROCK_5B_PIN_COUNT  40
+#define MRAA_RADXA_ROCK_5B_LED_COUNT  1
 
 mraa_board_t *
         mraa_radxa_rock_5b();

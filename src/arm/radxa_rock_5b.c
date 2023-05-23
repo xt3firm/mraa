@@ -19,7 +19,8 @@
 
 #define MAX_SIZE 64
 
-const char* radxa_rock_5b_serialdev[MRAA_RADXA_ROCK_5B_UART_COUNT] = { "/dev/ttyS2", "/dev/ttyS3", "/dev/ttyS4", "/dev/ttyS7" };
+static const char* radxa_rock_5b_serialdev[MRAA_RADXA_ROCK_5B_UART_COUNT] = { "/dev/ttyS2", "/dev/ttyS3", "/dev/ttyS4", "/dev/ttyS7" };
+static const char* radxa_rock_5b_led[MRAA_RADXA_ROCK_5B_LED_COUNT] = { "status", "power" };
 
 void
 mraa_radxa_rock_5b_pininfo(mraa_board_t* board, int index, int sysfs_pin, mraa_pincapabilities_t pincapabilities_t, char* fmt, ...)
@@ -213,6 +214,10 @@ mraa_radxa_rock_5b()
     mraa_radxa_rock_5b_pininfo(b, 38,  106, (mraa_pincapabilities_t){1,1,1,0,0,0,0,1}, "PWM3_IR_M1, UART2_RX_M2");
     mraa_radxa_rock_5b_pininfo(b, 39,  -1,  (mraa_pincapabilities_t){1,0,0,0,0,0,0,0}, "GND");
     mraa_radxa_rock_5b_pininfo(b, 40,  107, (mraa_pincapabilities_t){1,1,0,0,0,0,0,0}, "GPIO3_B3");
+
+    /* set leds */
+    b->led_dev[0].name = (char*) radxa_rock_5b_led[0];
+    b->led_dev_count   = MRAA_RADXA_ROCK_5B_LED_COUNT;
 
     return b;
 }
