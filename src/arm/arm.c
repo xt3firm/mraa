@@ -27,6 +27,7 @@
 #include "arm/siemens/iot2050.h"
 #include "mraa_internal.h"
 #include "arm/radxa_cm3_io.h"
+#include "arm/radxa_rock_5a.h"
 #include "arm/radxa_rock_5b.h"
 
 mraa_platform_t
@@ -126,6 +127,8 @@ mraa_arm_platform()
             platform_type = MRAA_RADXA_CM3_IO;
         else if (mraa_file_contains("/proc/device-tree/model", "Radxa ROCK 5B"))
             platform_type = MRAA_RADXA_ROCK_5_MODEL_B;
+        else if (mraa_file_contains("/proc/device-tree/model", "Radxa ROCK 5A"))
+            platform_type = MRAA_RADXA_ROCK_5_MODEL_A;
         else if (mraa_file_contains("/proc/device-tree/compatible", "raspberrypi,"))
             platform_type = MRAA_RASPBERRY_PI;
         else if (mraa_file_contains("/proc/device-tree/model", "ADLINK ARM, LEC-PX30"))
@@ -179,6 +182,9 @@ mraa_arm_platform()
             break;
         case MRAA_RADXA_ROCK_5_MODEL_B:
             plat = mraa_radxa_rock_5b();
+            break;
+        case MRAA_RADXA_ROCK_5_MODEL_A:
+            plat = mraa_radxa_rock_5a();
             break;
         case MRAA_DE_NANO_SOC:
             plat = mraa_de_nano_soc();
