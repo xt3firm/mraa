@@ -20,7 +20,7 @@
 #define MAX_SIZE 64
 
 static const char* radxa_rock_5b_serialdev[MRAA_RADXA_ROCK_5B_UART_COUNT] = { "/dev/ttyS2", "/dev/ttyS3", "/dev/ttyS4", "/dev/ttyS7" };
-static const char* radxa_rock_5b_led[MRAA_RADXA_ROCK_5B_LED_COUNT] = { "status", "power" };
+static const char* radxa_rock_5b_led[MRAA_RADXA_ROCK_5B_LED_COUNT] = { "status" };
 
 void
 mraa_radxa_rock_5b_pininfo(mraa_board_t* board, int index, int sysfs_pin, mraa_pincapabilities_t pincapabilities_t, char* fmt, ...)
