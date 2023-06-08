@@ -14,9 +14,6 @@
 #include "gpio.h"
 #include "mraa.h"
 
-/* I²C bus number, 7 on RasPi 4 and ROCK Pi 4 */
-#define BUS_NUM  7
-
 /* I²C address of the MCU */
 #define ADDR_FAN 0x1A
 
@@ -322,7 +319,24 @@ static int run_daemon(int (*func)(mraa_i2c_context), mraa_i2c_context arg) {
 
 int main(int argc, char const *argv[])
 {
-    mraa_i2c_context dev = mraa_i2c_init_raw(BUS_NUM);
+    /* I²C bus number, 7 on RaspPi 4 and ROCK Pi 4 */
+    int busnum = 7;
+
+    mraa_platform_t platform = mraa_get_platform_type();
+    switch (platform) {
+    case MRAA_ROCKPI4:
+    case MRAA_RASPBERRY_PI:  // assume a 4b here
+        busnum = 7;
+        break;
+    case MRAA_RADXA_ROCK_5_MODEL_A:
+        busnum = 8;
+        break;
+    default:
+        fprintf(stderr, "Only Raspberry 4B, Radxa Rock 4C+, and Radxa Rock 5a are supported.\n");
+        return EXIT_FAILURE;
+    }
+
+    mraa_i2c_context dev = mraa_i2c_init_raw(busnum);
 
     if (dev == NULL) {
         return EXIT_FAILURE;
